@@ -1,0 +1,42 @@
+h1 {
+  padding: 0 0 0 2vw;
+}
+
+h2 {
+  padding: 1.5vh 0 0 2vh;
+  margin: 0 auto;
+}
+
+#profile-page {
+  margin: 2vw; 
+  background-color: #fafcfc;
+  border-radius: 23px;
+  box-shadow:0.25em 0.25em 0.8em #afafb6;
+  padding: 10px
+}
+
+.profile-box {
+  margin-left: 10px;
+}
+
+.profile-box p {
+  width: 90%;
+  border-radius: 20px;
+  font-family: inherit;
+  border: 2px;
+  border-color: #424262f1;
+  border-width: 2px;
+  border-style: solid;
+  resize: none;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+#profile-picture {
+  border-radius: 50%;
+  width: 6em;
+  height: 6em;
+  padding: 1em;
+}

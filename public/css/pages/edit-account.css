@@ -1,0 +1,129 @@
+h1 {
+  font-size: 2em;
+  padding: 0 0 0 2vw;
+}
+
+p {
+  margin: 0 auto;
+}
+
+#center-text {
+  text-align: center;
+}
+
+h2 {
+  font-weight: 550;
+  padding: 0.99vw 0 0 2.2vw;
+  font-size: 1.8em;
+}
+
+label {
+  font-weight: 500;
+  font-size: 1.6em;
+}
+
+#form-box{
+  margin: 2vw; 
+  background-color: #fafcfc;
+  border-radius: 23px;
+  box-shadow:0.25em 0.25em 0.8em #afafb6;
+  padding: 10px;
+  width: 70%;
+  justify-self: center;
+}
+
+#form-container {
+  padding: 1.5em 3em 1.5em 3em;
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: 25em auto;
+  justify-items: left;
+  column-gap: 2em;
+}
+
+#display-profile{
+  border-radius: 50%;
+  width: 6em;
+  height: 6em;
+  padding: 1em;
+}
+
+textarea[id="edit-bio"], textarea[id="edit-availability"] {
+  width: 90%;
+  border-radius: 20px;
+  font-family: inherit;
+  padding: 1em;
+  margin: 1em 0;
+  border: 2px;
+  border-color: #424262f1;
+  border-width: 2px;
+  border-style: solid;
+  resize: none;
+}
+
+.edit-text{
+ border-radius: 20px;
+  width: 75%;
+  font-family: inherit;
+  padding: 1em;
+  margin: 1em 0;
+  border: 2px;
+  border-width: 2px;
+  border-color: #424262f1;
+  border-style: solid;
+}
+
+input[id="mentee-capacity"]{
+  border-radius: 20px;
+  width: 45%;
+  font-family: inherit;
+  padding: 1em;
+  margin: 1em 0;
+  border: 2px;
+  border-width: 2px;
+  border-color: #424262f1;
+  border-style: solid;
+}
+
+input[type="submit"] {
+  border: none;
+  outline: none;
+  background-color: #5f4cbcbc; 
+  color: white;
+  padding: 0.4em 0.8em;
+  margin: 1em 0;
+  cursor: pointer;
+  border-radius: 0.3em;
+}
+
+input[type="submit"]:hover {
+  border: 0.1em;
+  background-color: #3d28a5bc;
+  font-weight: 550;
+}
+
+.delete-button {
+  border: none;
+  outline: none;
+  background-color: #9c022b; 
+  color: white;
+  padding: 0.4em 0.8em;
+  margin: 0 0 1em 3em;
+  cursor: pointer;
+  border-radius: 0.3em;
+}
+
+.delete-button:hover {
+  border: 0.1em;
+  background-color: #64021c;
+  font-weight: 550;
+}
+
+.error-message {
+  margin: 0 0 1em 3em;
+  color: rgb(172, 23, 23);
+  font-weight:550;
+  font-size: 1.4em;
+  padding: 1em;
+  text-align: center;
+}

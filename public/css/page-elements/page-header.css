@@ -1,0 +1,28 @@
+header{
+  padding: 0.3vw;
+  width: 91%;
+  background-color: #acb2ea;
+  display: block;
+  justify-self: right;
+  text-align: right;
+}
+
+#profile-picture{
+  border-radius: 50%;
+  width: 3.5vw;
+  height: 3.5vw;
+  padding: 1vw;
+  object-fit: cover;
+}
+
+#header-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  height: 3.5vw;
+
+  font-weight: 550;
+  font-size: 1.4vw;
+}

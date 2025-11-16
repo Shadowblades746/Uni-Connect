@@ -1,0 +1,25 @@
+/* CSS Shared Between All Pages */
+
+html {
+    background-color:  #ecf0f0;
+    color: #2f3535;
+    font-family: 'Outfit';
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    margin: 0;
+  }
+
+.error {
+    color: red;
+}
+
+.backButton {
+    width: 3%;
+    height: width;
+    margin-top: 10px;
+    margin-left: 10px;
+}

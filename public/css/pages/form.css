@@ -1,0 +1,106 @@
+header {
+    justify-content: left;
+    align-items: left;
+    display: inline;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: rgb(85, 85, 85);
+}
+
+main {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4em;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 50vw;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, .radio_input, .dropdown_input {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 2px solid #ccc;
+}
+
+.text_input, .date_input, .dropdown_input{
+    font-family: 'Outfit', sans-serif;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.radio_input, .file_input{
+    padding: 10px 10px;
+}
+
+#other.radio_input, #male.radio_input, #female.radio_input {
+    margin: 0 3px 0 5px;
+}
+
+button{
+    margin-top: 10px;
+}
+
+.submit_button, .additional_button {
+    height: 50px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.submit_button {
+    background-color: #4CAF50;
+}
+
+.submit_button:hover{
+    background-color: #45a049;
+}
+
+.additional_button {
+    background-color: #8a90d4;
+}
+
+.additional_button:hover {
+    background-color: #6f75b8;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}

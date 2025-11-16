@@ -1,0 +1,57 @@
+.admin-activity-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.panel-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    color: #333;
+}
+
+.activity-table th,
+.activity-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.activity-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.activity-table tr.unviewed {
+    background-color: #fff8e1;
+}
+
+.activity-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.activity-table td.date-column,
+.activity-table td.time-column {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activity-table th input[type="checkbox"] {
+    accent-color: #5a73d8;
+}
+
+.activity-table td input[type="checkbox"] {
+    accent-color: #4CAF50;
+}

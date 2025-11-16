@@ -1,0 +1,9 @@
+/*
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide#introducing_the_variation_axis 
+ */
+
+@font-face {
+    font-family: "Outfit";
+    src: url("../../fonts/Outfit/Outfit-VariableFont_wght.ttf");
+    font-style: normal
+}
