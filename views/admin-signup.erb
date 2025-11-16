@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/pages/main-homepage.css">
+    <link rel="stylesheet" href="/css/pages/form.css">
+    <link rel="stylesheet" href="/css/fonts/outfit.css">
+    <title>UniConnect Admins: Sign Up</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <image src="images/back-button.png" class="backButton">
+      </a>
+    </header>
+
+    <main>
+      <form action="/admin-request-form" method="post" enctype="multipart/form-data">
+        <h1>Admin Signup</h1>
+        <a class="additional_button" href="/admin-login">Already have an account? Log in!</a>
+
+        <label for="email">Email:</label>
+        <input class="text_input" type="email" name="email" required>
+
+        <label for="extra info">Extra info:</label>
+        <input class="text_input" type="text" name="extra_info" required>
+
+
+        <button class="submit_button" type="submit">Sign Up</button>
+
+        <% if locals[:error] %>
+          <p class="error"><%= locals[:error] %></p>
+        <% end %>
+      </form>
+    </main>
+
+    <%= erb :"shared-components/page-footer" %>
+  </body>
+</html>

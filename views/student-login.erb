@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>UniConnect: Log In</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/pages/main-homepage.css">
+  <link rel="stylesheet" href="/css/pages/form.css">
+  <link rel="stylesheet" href="/css/fonts/outfit.css">
+</head>
+
+<body>
+
+  <header>
+    <a href="/">
+      <image src="images/back-button.png" class="backButton">
+    </a>
+  </header>
+
+  <main>
+    <form action="/student-login" method="post">
+
+      <h1>Student Log In</h1>
+
+      <label for="email">Email:</label>
+      <input class="text_input" type="email" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input class="text_input" type="password" id="password" name="password" required>
+
+      <%# <a class="additional_button">Forgot Password</a> %>
+      <a class="additional_button" href="/student-signup">Sign Up</a>
+      <button class="submit_button" type="submit">Login</button>
+
+      <% if locals[:error] %>
+        <p class="error"><%= locals[:error] %></p>
+      <% end %>
+    </form>
+  </main>
+
+<%= erb :"shared-components/page-footer" %>
+</body>
+</html>

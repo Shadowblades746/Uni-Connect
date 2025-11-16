@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/fonts/outfit.css">
+      <link rel="stylesheet" href="/css/pages/dashboard.css">
+      <title>UniConnect: Dashboard</title>
+  </head>
+    
+  <body>
+    <%= erb :"shared-components/page-header" %>
+
+    <%= erb :"shared-components/sidebar" %>
+
+    <main>
+      <h1>Dashboard</h1>
+      
+
+      <div id="mentee-box">
+        <% if @user.user_status == "mentee" %>
+          <h2>Available Mentors </h2>
+          <div id="mentorlist">
+            <% @validMentors.each do |mentor| %>
+            <div class="mentorBox">
+              <% if not mentor.bio.nil? and not mentor.bio == "" then %>
+                <% if mentor.badge == 1 %>
+                  <div id="badge-display">
+                    <p>I am an experienced mentor!</p>
+                    <img id="badge" alt="experienced mentor bagge" src="/images/badge.png">
+                  </div>
+                <% end %>
+                <p> <%=mentor.bio %> </p>
+              <% else %>
+                <p> This Mentor does not currently have a bio. Please check back later </p>
+              <% end %>
+              <a class="apply_button" id="applyButton" href="<%="dashboard/apply?mentor_id=" + mentor.id.to_s%>"> Apply </a>
+              <a class="report_button" id="reportButton" href="<%="dashboard/report?mentor_id=" + mentor.id.to_s%>"> Report </a>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </main>
+  </body>
+</html>

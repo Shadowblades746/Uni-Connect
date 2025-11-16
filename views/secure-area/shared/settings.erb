@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/fonts/outfit.css">
+        <link rel="stylesheet" href="/css/pages/dashboard.css">
+        <link rel="stylesheet" href="/css/pages/edit-account.css">
+        <title>UniConnect: Settings</title>
+    </head>
+    
+  <body>
+    <%= erb :"shared-components/page-header" %>
+    <%= erb :"shared-components/sidebar" %>
+
+    <main>
+      <h1>Settings</h1>
+            
+      <div id="form-box">
+        <% if @error_message %>
+          <div class="error-message">
+          <%= @error_message %>
+          </div>
+        <% end %>
+        <h2>Profile</h2>
+        <form action="/settings-edit-profile" method="post" enctype="multipart/form-data" id="form-container"> 
+          <div>
+            <label for="profile_picture">Edit profile picture</label>
+          </div>
+          <div>
+            <% if !@user.profile_picture.nil? %>
+              <img id="display-profile" alt="pfp" src="data:image/jpeg;base64,<%= Base64.encode64(@user.profile_picture) %>">
+            <% else %>
+              <img id="display-profile" alt="pfp" src="/images/student-default-picture.png">
+            <% end %>
+            <input type="file" name="profile_picture" accept="image/jpeg, image/png, image/jpg"></input>
+          </div>
+
+          <% if @user.user_status == "mentor" %>
+            <div>
+              <label for="mentee_capacity">Mentee capacity</label>
+              <p>Please choose a maximum number of mentees you wish to take on. The default is (<%= @global_max_mentee_capacity %>).
+              Please note you cannot take on more than <%= @global_max_mentee_capacity %> at this time.
+              (You are free to change this later).</p>
+              <br>
+            </div>
+          
+            <div>
+              <br>
+              <br>
+              <input type="number" value="<%= @user.mentee_capacity %>" id="mentee-capacity" name="mentee_capacity" min="1" max="<%= @global_max_mentee_capacity %>">
+            </div>
+
+            <div>
+              <label for="availability" required>Your availability</label>
+              <p>(Optional) Please give some details on your availability to help mentees choose a suitable match.</p>
+            </div>
+
+            <textarea type="text" id="edit-availability" name="edit_availability" rows="10" maxlength="300"><%= h(@user.mentor_availability.to_s) %></textarea>
+          <% end %>
+          
+          <div>
+            <label for="edit_bio" required>Short introduction</label>
+            <p>Please enter a short introduction of yourself, this will be visible to  
+              <% if @user.user_status == "mentee" %>
+                any mentors you select.
+              <% else %>
+                all mentees during the matching process.
+              <% end %>
+            (You are free to make changes anytime, max 1000 characters)</p>
+          </div>
+
+          <textarea type="text" id="edit-bio" name="edit_bio" rows="15" maxlength="1000" required><%= h(@user.bio.to_s) %></textarea>
+
+          <br>
+          <input type="submit" value="Save profile"></input>
+        </form>
+        
+        <h2>Personal information</h2>
+        <form action="/settings-edit-personal-information" method="post" id="form-container"> 
+          <label for="edit_first_name">Edit first name:</label>
+          <textarea type="text" name="edit_first_name" class="edit-text" rows="1" required><%= h(@user.first_names) %></textarea>
+          <label for="edit_gender">Edit gender:</label>
+          <div>
+            <input type="radio" name="edit_gender" id="female" value="female" 
+              <% if @user.gender == "female" then%>
+                <%= 'checked="true"'%>
+              <%end%>
+              >Female
+            </input>
+            <input type="radio" name="edit_gender" id="male" value="male"
+              <% if @user.gender == "male" then%>
+                <%= 'checked="true"'%>
+              <%end%>
+              >Male
+            </input>
+            <input type="radio" name="edit_gender" id="other" value="other"
+              <% if @user.gender == "other" then%>
+                <%= 'checked="true"'%>
+              <%end%>
+              >Other
+            </input>
+          </div>
+          <label> Edit Pronouns:</label>
+          <textarea type="text" name="edit_pronouns" class="edit-text" rows="1"><%= h(@user.pronouns) %></textarea>
+          <br>
+          <input type="submit" value="Save details">
+        </form>
+        
+        <%# <h2>Password</h2>
+        <form action="/settings-change-password" method="post" id="form-container">    
+          <label id="password" for="old_password">Enter old password:</label>
+          <div>
+            <input type="password" name="old_password" class="edit-text" required>
+            <br>
+          </div>
+        
+          <label id="password" for="new_password">Enter new password:</label>
+          <div>
+            <input type="password" name="new_password" class="edit-text" required>
+            <br>
+          </div>
+          
+          <label id="password" for="confirm_password">Confirm new password:</label>
+          <div>
+            <input type="password" name="confirm_password" class="edit-text" required>
+            <br>
+          </div>
+          <br>
+          <input type="submit" value="Submit">
+        </form> %>
+
+        <h2>Delete Account</h2>
+        <form action="/dashboard/delete-account" method="get">
+          <button type="submit" class="delete-button">Delete Account</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

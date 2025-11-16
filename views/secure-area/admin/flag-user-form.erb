@@ -1,0 +1,17 @@
+<html>
+  <link rel="stylesheet" href="/css/pages/admin-dashboard.css">
+  <body>
+    <main>
+      <div class="flag-user">
+        <h3>Flag User: <%= @user.first_names + " " + @user.last_name %> </h3>
+        <form action="/admin-private/user-search-page/modify-user/flag/<%= @user.id %>" method="post">
+          <div class="form">
+            <label for="reason">Flag Reason</label>
+            <input type="text" id="reason" name="reason" visible="true" required></input>
+          </div>
+          <button type="submit" class="flag-user-btn">Flag User</button>
+        </form>
+      </div>
+    </main>
+  </body
+</html>

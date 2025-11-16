@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/pages/dashboard-panels/admin-activity.css">
+<div class="admin-activity-container">
+  <h1 class="panel-title">Admin Activity</h1>
+  <form action="/dashboard/admin-activity" method="post" class="activity-form">
+    <div class="table-wrapper">
+      <table class="activity-table">
+        <thead>
+        <tr>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>
+            <input type="checkbox" name="all_viewed" value="1" onchange="this.form.submit()">
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <% activities = AdminActivity.order(Sequel.desc(:event_date), Sequel.desc(:event_time)) %>
+        <% activities.each do |activity| %>
+          <tr class="<%= activity[:event_viewed] == 1 ? '' : 'unviewed' %>">
+            <td><%= activity[:event_text].gsub("\n", "<br>") %></td>
+            <td class="date-column"><%= activity[:event_date] %></td>
+            <td class="time-column"><%= activity[:event_time] %></td>
+            <td>
+              <input type="checkbox" name="id" value="<%= activity[:event_id] %>"
+                     onchange="this.form.submit()" <%= activity[:event_viewed] == 1 ? 'checked disabled' : '' %> >
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>

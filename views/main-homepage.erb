@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="./css/pages/main-homepage.css">
+        <link rel="stylesheet" href="./css/fonts/outfit.css">
+        <title>UniConnect</title>
+    </head>
+
+    
+    <body>
+        <header>
+            <h1>
+                UniConnect
+            </h1>
+            <h2>
+                Peer Mentoring for Students @ Steel City University
+            </h2>
+        </header>
+        <main>
+            <div id="button_box">
+              <a href="/student-login"><button class="student">Student Login</button></a>
+              <a href="/student-signup"><button class="student">Student Signup</button></a>
+            </div>
+
+            <div id="button_box">
+              <a href="/admin-login"><button class="admin">Admin Login</button></a>
+              <a href="/admin-signup"><button class="admin">Admin Signup</button></a>
+            </div>
+        </main>
+        <%= erb :"shared-components/page-footer" %>
+    </body>
+</html>

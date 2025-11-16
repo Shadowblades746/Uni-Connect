@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/page-elements/sidebar.css">
+
+<div id="sidebar">
+  <img id="logo" src="/images/logo1.png" alt="temp logo">
+  <a href="/dashboard"> Dashboard </a>
+  <a href="/dashboard/notifications"> Notifications 
+    (Unread: <%=get_unread_notification_count(@user.id)%>)
+  </a>
+  <a href="/dashboard/requests"> Requests </a>
+  <a href="/dashboard/profile-page"> Profile </a>
+  <a href="/dashboard/settings"> Settings </a>
+  <a href="/logout"> Log out </a>
+</div>
+
+<footer>
+  <a href="/terms">Terms & Conditions</a>
+  <a href="/licences">Software Licences</a>
+</footer>

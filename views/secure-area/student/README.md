@@ -1,0 +1,1 @@
+This folder should contain views specific to students.

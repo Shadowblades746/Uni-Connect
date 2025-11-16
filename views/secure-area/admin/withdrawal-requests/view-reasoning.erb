@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/fonts/outfit.css">
+  <link rel="stylesheet" href="/css/pages/admin-dashboard.css">
+  <link rel="stylesheet" href="/css/pages/dashboard-panels/settings.css">
+  <title>UniConnect: Delete Account</title>
+</head>
+
+<body>
+<%= erb :"shared-components/page-header" %>
+<%= erb :"shared-components/sidebar" %>
+
+<main>
+  <div class="card actions withdrawal-reasoning">
+    <h2><%= @primary_user %> requested to withdraw from <%= @secondary_user %></h2>
+    <h3>Reason</h3>
+    <p>
+      <%= @withdrawal_request.reason_from_primary %>
+    </p>
+    <form action="/admin-private/withdraw-requests" method="post">
+      <input type="hidden" name="request_id" value="<%= @withdrawal_request.withdrawal_id %>">
+      <div class="button-group">
+        <button value="true" name="action" action="submit" class="accept-btn">Accept</button>
+        <button value="false" name="action" action="submit" class="reject-btn">Reject</button>
+      </div>
+    </form>
+  </div>
+</main>
+</body>
+</html>

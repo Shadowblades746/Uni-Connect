@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/fonts/outfit.css">
+      <link rel="stylesheet" href="/css/pages/dashboard.css">
+      <link rel="stylesheet" href="/css/pages/edit-account.css">
+      <title>UniConnect: Application</title>
+  </head>
+    
+  <body>
+    <%= erb :"shared-components/page-header" %>
+
+    <%= erb :"shared-components/sidebar" %>
+
+    <main>
+      <h1>Apply to Mentor</h1>
+
+      <div id="form-box">
+        <form method="post" action="/dashboard/send-application" id="form-container">
+          <label for="mentor_id">Mentor ID </label><br>
+          <input type="text" id="mentor_id" name="mentor_id" readonly="readonly" value="<%=params['mentor_id']%>"><br>
+
+          <label for="application_text"> Application: </label> <br>
+          <input type="text" id="application-text" name="application_text" required> <br>
+        
+          <button action="submit">Apply</button>
+        </form>
+        </div>
+    </main>
+  </body>
+
+</html>

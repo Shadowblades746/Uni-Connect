@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/fonts/outfit.css">
+      <link rel="stylesheet" href="/css/pages/dashboard.css">
+      <link rel="stylesheet" href="/css/pages/dashboard-panels/profile.css">
+      <title>UniConnect: Your Profile</title>
+  </head>
+    
+  <body>
+    <%= erb :"shared-components/page-header" %>
+
+    <%= erb :"shared-components/sidebar" %>
+
+    <main>
+      <h1>Profile</h1>
+
+      <div id="profile-page">
+        <h2><%=@user_showing.first_names + " " + @user_showing.last_name%></h2>
+        <h2><%=@user_showing.pronouns%></h2>
+          <% if !@user_showing.profile_picture.nil? %>
+            <img id="profile-picture" alt="pfp" src="data:image/jpeg;base64,<%= Base64.encode64(@user_showing.profile_picture) %>">
+          <% else %>
+            <img id="profile-picture" alt="pfp" src="/images/student-default-picture.png">
+          <% end %>
+
+        <h2>Bio</h2>
+        <div class="profile-box">
+          <p>
+          <%= @user_showing.bio %>
+          </p>
+        </div>
+
+        <% if @user_showing.user_status == 'mentor' then %>
+          <h2>Availability</h2>
+          <div class="profile-box">
+            <p>
+              <%= @user_showing.mentor_availability%>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </main>
+  </body>
+
+</html>

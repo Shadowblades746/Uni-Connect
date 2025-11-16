@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="./css/pages/main-homepage.css">
+        <link rel="stylesheet" href="./css/fonts/outfit.css">
+        <title>UniConnect: Log Out</title>
+    </head>
+
+    
+    <body>
+        <header>
+            <h1>
+              Successfully Logged Out
+            </h1>
+            <h2>Returning To Homepage In: <p id="countdown"</p>
+        </header>
+        <main>
+            <div id="button_box">
+              <a href="/"><button>Return To Homepage</button></a>
+            </div>
+        </main>
+        <%= erb :"shared-components/page-footer" %>
+    </body>
+
+    <script src="scripts/logout/auto-logout.js"></script>
+</html>

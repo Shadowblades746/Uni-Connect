@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/css/pages/admin-flagged-users-panel.css">
+<div class="flagged-users-panel">
+  <h1>Flagged Users</h1>
+  <div class="table-container">
+    <table class="styled-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Flag Reason</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @flagged_users.each do |user| %>
+        <tr>
+          <td><%= user[:first_names] + " " + user[:last_name] %></td>
+          <td><%= user[:email] %></td>
+          <td><%= user[:user_status] %></td>
+          <td><%= user[:flagged_reason] %></td>
+          <td>
+            <form action="/admin-private/user-search-page/modify-user/unflag" method="post" class="action-form">
+              <button class="btn btn-unflag" name="id" value="<%= user[:id] %>" action="submit">Unflag</button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

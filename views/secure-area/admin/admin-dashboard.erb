@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/fonts/outfit.css">
+  <link rel="stylesheet" href="/css/pages/admin-dashboard.css">
+</head>
+
+<body>
+<%= erb :"shared-components/page-header" %>
+<%= erb :"secure-area/admin/admin-sidebar" %>
+
+<main>
+  <div class="row">
+    <div class="card stats">
+      <h3>Total Users</h3>
+      <p><%= Users.count %></p>
+    </div>
+    <div class="card stats">
+      <h3>Active Mentors</h3>
+      <p><%= Users.where(user_status: "mentor").count %></p>
+    </div>
+    <div class="card stats">
+      <h3>Active Mentees</h3>
+      <p><%= Users.where(user_status: "mentee").count %></p>
+    </div>
+    <div class="card stats">
+      <h3>Active Admins</h3>
+      <p><%= Admins.count %></p>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="card actions withdraw_request">
+      <form action="/admin-private/withdraw-requests" method="post">
+        <h3>User Requests</h3>
+        <p>Select a request</p>
+        <label>
+          <select name="request_id">
+            <% UserWithdrawalRequests.each do |request|%>
+
+            <% primary_user = Users.where(id: request.primary_user_id).first %>
+            <% secondary_user = Users.where(id: request.secondary_user_id).first %>
+            <% if primary_user.nil? or secondary_user.nil? then break %>
+            <% end %>
+
+            <option value="<%= request.withdrawal_id%>"><%= primary_user.full_name + 
+            " withdraw from " + secondary_user.full_name %> + </option>
+
+            <% end %>
+          </select>
+        </label>
+        <div class="button-group">
+          <button value="true" name="action" action="submit" class="accept-btn">Accept</button>
+          <button value="false" name="action" action="submit" class="reject-btn">Reject</button>
+          <button value="query" name="action" action="sumbit">View Reason</button>
+        </div>
+
+        <% unless @errors.nil?  %>
+        <label> <%= @errors %>
+        <% end %>
+        
+      </form>
+    </div>
+
+    <div class="card actions scrollable-form">
+      <h3>Create New Admin</h3>
+      <form action="/dashboard/admin-signup-form" method="post" enctype="multipart/form-data">
+
+        <label>email
+          <input class="form" type="email" name="email" required>
+        </label>
+
+        <label>Password
+          <input class="form" type="password" name="password" required>
+        </label>
+
+        <label>First Name
+          <input class="form" type="text" name="first_names" required>
+        </label>
+
+        <label>Last name
+          <input type="text" name="last_name" required>
+        </label>
+        <button class="promote-btn" type="submit">Promote to Admin</button>
+
+        <% if locals[:error] %>
+          <p class="error"><%= locals[:error] %></p>
+        <% end %>
+
+      </form>
+
+    </div>
+
+    <div class="card actions">
+      <h3>Set Global Mentee Limit</h3>
+      <p>Maximum Mentees per Mentor</p>
+      <form action="/dashboard/update_global_mentee_max" method="post">
+        <label>
+          <input type="number" name="global_mentee_max" value="<%= GlobalSettings.where(global_settings_id: 1).first&.global_max_mentee_capacity %>" min="1" required>
+        </label>
+        <button class="limit-btn" type="submit">Save Limit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="user-management">
+
+    <h2>User Management</h2>
+    <div class="search-bar">
+      <form action="/dashboard" method="get">
+        <label>
+          <input id="searchBox" name="searchterm" type="text" placeholder="Search users by name or email" value="<%= @search_term if !@search_term.nil?%>">
+        </label>
+        <button class="search-btn" action="submit">Search</button>
+      </form>
+    </div>
+    <% if !@search_term.nil? %>
+    <%= '<iframe id="tableFrame" height="500" src="/admin-private/user-search-page?searchterm=' + @search_term + '"></iframe>'%>
+    <% else %>
+    <%= '<iframe id="tableFrame" height="500" src="/admin-private/user-search-page"></iframe>'%>
+    <% end %>
+    <script src="/scripts/admin-dashboard/live-search.js"></script>
+  </div>
+</main>
+</body>
+</html>

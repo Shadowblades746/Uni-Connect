@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/css/pages/dashboard-panels/notifications.css">
+<div id="notification-panel">
+  <h1>Notifications</h1>
+  <form action="/dashboard/notifications" method="post">
+      <table>
+      <thead>
+        <tr>
+          <th scope="col">Notification</th>
+          <th scope="col">Date</th>
+          <th scope="col"><button action="submit" name="all_read" value="1">Mark All Notifications As Read</button></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% notifications = Notifications.where(id: @user.id).order(Sequel.desc(:date), Sequel.desc(:time))%>
+        <% notifications.each do |notif|%>
+
+        <% if notif.notification_read == 1 then%>
+        <%='<tr>'%>
+        <%else%>
+        <%='<tr class="unread_notif">'%>
+        <%end%>
+          <td><%= notif.text%></td>
+          <td><%= notif.date_time %></td>
+          <td><button class="mark-read" action="submit" name="id" value="<%=notif.notification_id%>">Mark As Read</button></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </form>
+</div>

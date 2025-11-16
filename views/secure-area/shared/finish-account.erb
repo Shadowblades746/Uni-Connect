@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/fonts/outfit.css">
+      <link rel="stylesheet" href="/css/pages/edit-account.css">
+  </head>
+    
+  <body>
+    <main>
+      <h1 id="center-text">Finish account setup</h1>
+      <p id="center-text">Before you can continue to your dashboard, please fill out the required fields to finish setting up your account.</p>
+      <% if @error_message %>
+        <div class="error-message">
+          <%= @error_message %>
+        </div>
+      <% end %>
+      <div id="form-box">
+        <form action="/finish-account-setup" method="post" enctype="multipart/form-data" id="form-container">
+          <div>
+            <label for="profile_picture">Profile image (optional)</label>
+            <p>Please upload an image of yourself (less than 5MB, accepted formats are .JPEG or .PNG).
+            This will not be visible to any 
+              <% if @user.user_status == "mentee" %>
+                mentors 
+              <% else %>
+                mentees 
+              <% end %>
+               until a successful match is made.</p>
+          </div>
+
+          <div>
+            <% if !@user.profile_picture.nil? %>
+              <img id="display-profile" alt="pfp" src="data:image/jpeg;base64,<%= Base64.encode64(@user.profile_picture) %>">
+            <% else %>
+              <img id="display-profile" alt="pfp" src="/images/student-default-picture.png">
+            <% end %>
+            <input type="file" name="profile_picture" accept="image/jpeg, image/png, image/jpg"></input>
+          </div>
+
+          <div>
+            <label for="edit_bio" required>Short introduction</label>
+            <p>Please enter a short introduction of yourself, this will be visible to  
+              <% if @user.user_status == "mentee" %>
+                any mentors you select.
+              <% else %>
+                all mentees during the matching process.
+              <% end %>
+            (You are free to make changes anytime, max 1000 characters)</p>
+          </div>
+
+          <textarea type="text" id="edit-bio" name="edit_bio" rows="15" maxlength="1000"><%= @user.bio %></textarea>
+
+          <% if @user.user_status == "mentor" %>
+            <div>
+              <label for="mentee_capacity">Mentee capacity</label>
+              <p>Please choose a maximum number of mentees you wish to take on. The default is (<%= @global_max_mentee_capacity %>).
+              Please note you cannot take on more than <%= @global_max_mentee_capacity %> at this time.
+              (You are free to change this later).</p>
+              <br>
+            </div>
+          
+            <div>
+              <br>
+              <br>
+              <input type="number" value="<%= @user.mentee_capacity %>" id="mentee-capacity" name="mentee_capacity" min="1" max="<%= @global_max_mentee_capacity %>">
+            </div>
+
+            <div>
+              <label for="availability" required>Your availability</label>
+              <p>(Optional) Please give some details on your availability to help mentees choose a suitable match.</p>
+            </div>
+
+            <textarea type="text" id="edit-availability" name="edit_availability" rows="10" maxlength="300"><%= @user.mentor_availability %></textarea>
+          <% end %>
+          <br>
+          <input type="submit" value="Submit information"></input>
+        </form>
+      </div>
+    </main>
+
+    <%= erb :"shared-components/page-footer" %>
+  </body>
+
+</html>

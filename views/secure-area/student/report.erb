@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/fonts/outfit.css">
+      <link rel="stylesheet" href="/css/pages/dashboard.css">
+      <title>UniConnect: Application</title>
+  </head>
+    
+  <body>
+    <%= erb :"shared-components/page-header" %>
+
+    <%= erb :"shared-components/sidebar" %>
+
+    <main>
+      <h1>Report Mentor</h1>
+
+      <form method="post" action="/dashboard/send-report">
+        <label for="mentor_id">Mentor ID </label><br>
+        <input type="text" id="mentor_id" name="mentor_id" readonly="readonly" value="<%=params['mentor_id']%>"><br>
+
+        <label for="report_text"> What are you reporting for? </label> <br>
+        <input type="text" id="report_text" name="report_text"> <br>
+        
+        <input type="submit">
+      </form>
+    </main>
+  </body>
+
+</html>

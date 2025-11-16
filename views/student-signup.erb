@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>UniConnect: Sign Up</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/pages/main-homepage.css">
+    <link rel="stylesheet" href="/css/pages/form.css">
+    <link rel="stylesheet" href="/css/fonts/outfit.css">
+  </head>
+
+  <body>
+    <header>
+      <a href="/">
+        <image src="images/back-button.png" class="backButton">
+      </a>
+    </header>
+    
+    <main>
+      <form action="/student-signup-form" method="post" enctype="multipart/form-data">
+        <h1>Student Signup</h1>
+        <a class="additional_button" href="/student-login">Already have an account? Log in!</a>
+
+        <label for="u_card">User ID:</label>
+        <input class="text_input" type="number" name="u_card" required>
+
+        <label for="email">Email:</label>
+        <input class="text_input"type="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input class="text_input" type="password" name="password" required>
+
+        <label for="first_names">First Names:</label>
+        <input class="text_input" type="text" name="first_names" required>
+
+        <label for="last_name">Last Name:</label>
+        <input class="text_input" type="text" name="last_name" required>
+
+        <label for="year_group">Year Group:</label>
+        <select class="dropdown_input" name="year_group" required>
+          <option value="1st">1st Year</option>
+          <option value="2nd">2nd Year</option>
+          <option value="3rd">3rd Year</option>
+          <option value="4th">4th Year</option>
+          <option value="5th">5th Year</option>
+        </select>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input class="date_input" type="date" name="date_of_birth" required>
+
+        <label>Gender:</label>
+        <div class="radio_input">
+          <input class="radio_input" type="radio" id="male" name="gender" value="male" required>
+          <label for="male">Male</label>
+          <input class="radio_input" type="radio" id="female" name="gender" value="female" required>
+          <label for="female">Female</label>
+          <input class="radio_input" type="radio" id="other" name="gender" value="other" required>
+          <label for="other">Other</label>
+        </div>
+
+        <label>Pronouns:</label>
+        <label>You can enter as many pronouns as you would like, or not write any.</label>
+        <label>e.g. She/Her,They/Them,He/Him</label>
+        <input class="text_input" type="text" name="pronouns">
+
+        <label for="profile_picture">Profile Picture:</label>
+        <input class="file_input" type="file"  name="profile_picture">
+        <input type="hidden" name="setup_complete" value="0">
+
+        <div>
+          <label>I Accept The <a href="/terms">Terms & Conditions</a></label>
+          <input id="termsConditions" required type="checkbox">
+        </div>
+
+      <input type="hidden" name="setup_complete" value="0">
+
+        <button class="submit_button" type="submit">Sign Up</button>
+
+        <% if locals[:error] %>
+          <p class="error"><%= locals[:error] %></p>
+        <% end %>
+      </form>
+    </main>
+
+    <%= erb :"shared-components/page-footer" %>
+  </body>
+</html>

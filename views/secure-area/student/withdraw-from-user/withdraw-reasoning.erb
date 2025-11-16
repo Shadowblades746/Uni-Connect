@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/fonts/outfit.css">
+        <link rel="stylesheet" href="/css/pages/dashboard.css">
+        <link rel="stylesheet" href="/css/pages/dashboard-panels/settings.css">
+        <title>UniConnect: Delete Account</title>
+    </head>
+
+    <body>
+        <%= erb :"shared-components/page-header" %>
+        <%= erb :"shared-components/sidebar" %>
+
+        <main>
+            <div id="settings-box">
+                <h1>Why do you want to want to withdraw from <%= @withdraw_from %></h1>
+                <h2>
+                    To continue, enter your reasoning below, and press confirm.
+                </h2>
+                <form action="/dashboard/withdraw-request/submit" method="post" id="settings-container">
+                    <label for="reason">Reason</label>
+                    <textarea name="reason" id="edit-bio" required="true"></textarea>
+                    <button type="submit" name="withdraw_from_id" value=" <%= @withdraw_from_id %>" class="delete-button">Confirm Withdrawal Request</button>
+                </form>
+                <%=@errors%>
+            </div>
+        </main>
+    </body>
+</html>

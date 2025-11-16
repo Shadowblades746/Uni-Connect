@@ -1,0 +1,1 @@
+rm capybara-*.html

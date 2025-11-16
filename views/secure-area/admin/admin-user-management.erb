@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/fonts/outfit.css">
+        <link rel="stylesheet" href="/css/pages/admin-dashboard.css">
+    </head>
+    
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Pronouns</th>
+                    <th>Year Group</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Mentor Badge</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <%@users_list.each do |user|%>
+                  <tr class="<%= current_admin.user_to_reassign == user.id ? 'highlighted-row' : '' %>">
+                      <td><%= user.first_names + " " + user.last_name %></td>
+                      <td><%= user.email %></td>
+                      <td><%= user.pronouns %></td>
+                      <td><%= user.year_group %></td>
+                      <td><%= user.user_status %></td>
+                      <td>Active</td>
+                      <td> <%= user.badge == 1 ? "🏅" : "" %></td>
+                      <td>
+                        <div class="button-group">
+                          <form action="/admin-private/user-search-page/modify-user/delete" method="post">
+                            <button class="delete-btn" name="id" value="<%= user.id %>" action="submit" onclick="return confirm('Are you sure you want to delete this account? This action cannot be undone.');">Delete</button>
+                          </form>
+                          <form action="/admin-private/user-search-page/modify-user/badge" method="post">
+                            <button class="badge-btn" name="id" value="<%= user.id %>" action="submit">Badge</button>
+                          </form>
+                          <form action="/admin-private/user-search-page/modify-user/reassign" method="post">
+                            <button class="reassign-btn" name="id" value="<%= user.id %>" action="submit">Reassign</button>
+                          </form>
+                          <form action="/admin-private/user-search-page/modify-user/flag" method="post">
+                            <button class="flag-btn" name="id" value="<%= user.id %>" action="submit">Flag</button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                    <%end%>
+                </tbody>
+            </table>
+
+
+    </body>
+</html>
