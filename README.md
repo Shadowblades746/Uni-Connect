@@ -34,8 +34,10 @@ Here are the credentials for different user roles:
   Email: `mentee1@example.com`  
   Password: `mentee1`
 
-### Ruby Gems
-The project includes a `Gemfile` listing all the required gems. To install the necessary dependencies, run:
+## Requirements
+- Ruby version 2.7 or higher
+- The project includes a `Gemfile` listing all the required gems. To install the necessary dependencies, run:
 
 ```bash
 bundle install
+```
