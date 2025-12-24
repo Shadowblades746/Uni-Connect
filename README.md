@@ -12,8 +12,6 @@
 
 The platform simplifies the mentor-mentee relationship by making it easy for students to connect, apply, and manage their profiles, while admins ensure smooth operation.
 
----
-
 ## Demo & Test Users
 
 ### Demo Video
@@ -32,13 +30,9 @@ The platform simplifies the mentor-mentee relationship by making it easy for stu
 - Email: `mentee1@example.com`  
 - Password: `mentee1`
 
----
-
 ## Requirements
 - **Ruby version:** 2.7 or higher  
 - The project includes a `Gemfile` listing all required gems.
-
----
 
 ```bash
 bundle install
@@ -63,7 +57,5 @@ As part of the team, I contributed the following features and improvements:
 - Implemented **reassigning mentees to different mentors** with validation.  
 - Enabled **creation of admin accounts** from the admin dashboard.  
 - Implemented **activity logs and notifications** for all relevant actions.  
-
----
 
 This repository demonstrates my contributions in both **frontend styling** and **backend functionality**, showcasing skills in **Ruby, web development, database integration, user authentication, session management, and admin tools**.
