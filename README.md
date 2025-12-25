@@ -38,7 +38,7 @@ The platform simplifies the mentor-mentee relationship by making it easy for stu
 bundle install
 ```
 
-## My Contributions (Emad Riyaz Ahamed)
+## My Contributions 
 As part of the team, I contributed the following features and improvements:  
 
 ### Student Functionality
